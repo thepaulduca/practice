@@ -15,11 +15,12 @@ def calculate(integer, op_string, integer2)
 	elsif op_string == '/'
 		puts integer / integer2
 	else
-		puts "Thanks for coming to calculate"
+		puts "You entered an incorrect operator, try it again!"
 	end
 end
 
 all_expressions = []
+answers = []
 
 #User Interface
 
@@ -32,7 +33,7 @@ until system_end == true
 	puts "Type your operator now!"
 	op_string = gets.chomp
 	if op_string == 'done'
-		system_end = true
+		system_end = true	
 	else
 		puts "what is the first number you would like to put into your expression"
 		integer = gets.chomp.to_i
@@ -46,10 +47,10 @@ until system_end == true
 			end
 			saved_expression = integer.to_s + op_string + integer2.to_s
 			all_expressions << saved_expression
-			puts calculate(integer, op_string, integer2)
+			calculate(integer, op_string, integer2)
 		end
 	end
 end
 
+puts "Here are the expressions you evaluated"
 puts all_expressions
-
