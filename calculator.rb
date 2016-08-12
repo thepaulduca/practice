@@ -2,20 +2,28 @@
 #use if elsif else statement, tried finding more simple method but couldnt find anything online
 
 def calculate(integer, op_string, integer2)
-	string_int = integer.to_s
-	string_int2 = integer2.to_s
-	complete_expression = string_int + op_string + string_int2
-	puts complete_expression
-	if op_string == '+'
-		puts integer + integer2
-	elsif op_string == '-'
-		puts integer - integer2
-	elsif op_string == '*'
-		puts integer * integer2
-	elsif op_string == '/'
-		puts integer / integer2
-	else
-		puts "You entered an incorrect operator, try it again!"
+	if integer.is_a?(Fixnum) == true
+		if integer2.is_a?(Fixnum) == true
+		string_int = integer.to_s
+		string_int2 = integer2.to_s
+		complete_expression = string_int + op_string + string_int2
+		puts complete_expression
+			if op_string == '+'
+				puts integer + integer2
+			elsif op_string == '-'
+				puts integer - integer2
+			elsif op_string == '*'
+				puts integer * integer2
+			elsif op_string == '/'
+				puts integer / integer2
+			else
+				puts "You entered an incorrect operator the output is incorrect, try it again!"
+			end
+		else 
+			puts "You entered the wrong character the output is incorrect, try again"
+		end
+	else 
+		puts "You entered the wrong character the out put is incorrect, try again"
 	end
 end
 
@@ -45,7 +53,7 @@ until system_end == true
 			if integer2 == 'done'
 				system_end = true
 			end
-			saved_expression = integer.to_s + op_string + integer2.to_s
+			saved_expression = integer.to_s + op_string + integer2.to_s + " = #{calculate(integer, op_string, integer2)}"
 			all_expressions << saved_expression
 			calculate(integer, op_string, integer2)
 		end
@@ -54,3 +62,6 @@ end
 
 puts "Here are the expressions you evaluated"
 puts all_expressions
+
+
+puts "#{calculate(3,'+', 3)}"
